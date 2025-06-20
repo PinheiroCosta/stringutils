@@ -1,6 +1,7 @@
 # StringUtils API
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/seu-usuario/seu-repositorio/ci.yml)](https://github.com/seu-usuario/seu-repositorio/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/pinheirocosta/stringutils/ci.yml?branch=main)](https://github.com/pinheirocosta/stringutils/actions)
+
 
 Microsserviço FastAPI para manipulação e análise de strings.
 
