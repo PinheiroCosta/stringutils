@@ -1,7 +1,6 @@
 # StringUtils API
 
 Pequeno microsserviço FastAPI para manipulação de strings.  
-Faz parte do meu portfólio de projetos Python.
 
 ## Endpoints Disponíveis
 
