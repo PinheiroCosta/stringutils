@@ -1,8 +1,10 @@
 """
-Schemas Pydantic usados como modelos de entrada para os endpoints da API StringUtils.
+Schemas Pydantic usados como modelos de entrada para os endpoints da
+API StringUtils.
 """
 
 from pydantic import BaseModel, Field
+
 
 class TextInput(BaseModel):
     """
@@ -12,6 +14,7 @@ class TextInput(BaseModel):
         text (str): Texto de entrada. Limite de 1 a 10.000 caracteres.
     """
     text: str = Field(..., min_length=1, max_length=10000)
+
 
 class CharCountInput(BaseModel):
     """
@@ -27,4 +30,3 @@ class CharCountInput(BaseModel):
     count_spaces: bool = True
     count_special: bool = True
     count_escaped: bool = True
-

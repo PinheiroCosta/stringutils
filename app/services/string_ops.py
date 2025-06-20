@@ -10,7 +10,12 @@ import unicodedata
 import uuid
 
 
-def count_characters(text: str, count_spaces=True, count_special=True, count_escaped=True):
+def count_characters(
+    text: str,
+    count_spaces=True,
+    count_special=True,
+    count_escaped=True,
+):
     """
     Conta caracteres, palavras, vogais, consoantes e números em uma string.
 
@@ -50,7 +55,7 @@ def count_characters(text: str, count_spaces=True, count_special=True, count_esc
         if ch.lower() in "aeiou":
             vowel_count += 1
         elif ch.isalpha():
-            consonant_count += 1 
+            consonant_count += 1
 
     return {
         "characters": len(filtered),
@@ -58,6 +63,7 @@ def count_characters(text: str, count_spaces=True, count_special=True, count_esc
         "consonants": consonant_count,
         "words": len("".join(filtered).split()),
     }
+
 
 def reverse(text: str) -> str:
     """
@@ -71,6 +77,7 @@ def reverse(text: str) -> str:
     """
     return text[::-1]
 
+
 def uppercase(text: str) -> str:
     """
     Converte a string para letras maiúsculas.
@@ -83,6 +90,7 @@ def uppercase(text: str) -> str:
     """
     return text.upper()
 
+
 def lowercase(text: str) -> str:
     """
     Converte a string para letras minúsculas.
@@ -94,6 +102,7 @@ def lowercase(text: str) -> str:
         str: Texto em minúsculas.
     """
     return text.lower()
+
 
 def slugify(text: str) -> str:
     """
@@ -113,6 +122,7 @@ def slugify(text: str) -> str:
     text = re.sub(r'-+', '-', text)
     return text.strip('-').lower()
 
+
 def generate_uuid() -> str:
     """
     Gera um UUID v4.
@@ -121,6 +131,7 @@ def generate_uuid() -> str:
         str: UUID gerado.
     """
     return str(uuid.uuid4())
+
 
 def ascii_converter(text: str) -> str:
     """
@@ -134,6 +145,7 @@ def ascii_converter(text: str) -> str:
     """
     text = unicodedata.normalize('NFKD', text)
     return text.encode('ascii', 'ignore').decode('ascii')
+
 
 def is_palindrome(text: str) -> bool:
     """
