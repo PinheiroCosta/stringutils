@@ -5,6 +5,10 @@ from app.schemas import TextInput, CharCountInput
 router = APIRouter()
 
 
+@router.get("/health")
+def health_check():
+    return {"status": "ok"}
+
 @router.post("/reverse")
 def reverse(input: TextInput):
     return {"result": string_ops.reverse(input.text)}
