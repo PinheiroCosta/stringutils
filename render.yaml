@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: stringutils
+    env: docker
+    plan: free
+
