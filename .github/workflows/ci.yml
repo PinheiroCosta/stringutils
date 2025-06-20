@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      docker:
+        image: docker:24
+        options: --privileged
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest httpx
+
+      - name: Rodar testes
+        run: |
+          pytest
+
+      - name: Testar build Docker
+        run: |
+          docker build -t stringutils .
+
+      - name: Testar execução Uvicorn (Smoke Test)
+        run: |
+          docker run -d -p 5010:5010 --name stringutils_test stringutils
+          sleep 5
+          curl --fail http://localhost:5010/docs || (docker logs stringutils_test && exit 1)
+          docker stop stringutils_test
+
