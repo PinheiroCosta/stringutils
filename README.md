@@ -27,7 +27,7 @@ Microsserviço FastAPI para manipulação e análise de strings.
 ## Exemplo de Requisição
 
 ```bash
-curl -X POST https://localhost:5010/api/v1/stringutils/reverse \
+curl -X POST https://stringutils.pinheirocosta.com/api/v1/stringutils/reverse \
      -H "Content-Type: application/json" \
      -d '{"text": "abc"}'
 ```
