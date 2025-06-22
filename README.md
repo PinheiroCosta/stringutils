@@ -1,9 +1,19 @@
 # StringUtils API
-
-[![Build Status](https://img.shields.io/github/actions/workflow/status/pinheirocosta/stringutils/ci.yml?branch=main)](https://github.com/pinheirocosta/stringutils/actions)
-
-
 Microsserviço FastAPI para manipulação e análise de strings.
+
+[![Build Status](https://img.shields.io/github/actions/workflow/status/pinheirocosta/stringutils/ci.yml?branch=main)](https://github.com/pinheirocosta/stringutils/actions)  
+
+# Índice
+
+- [Ferramentas Disponíveis](#-ferramentas-disponíveis)
+- [Documentação da API](#documentação-da-api)
+- [Exemplo de Requisição](#exemplo-de-requisição)
+- [Como rodar Usando Docker (produção)](#como-rodar-usando-docker-produção)
+- [Ambiente de desenvolvimento interativo](#ambiente-de-desenvolvimento-interativo)
+- [Rodando sem Docker – opcional](#rodando-sem-docker--opcional)
+- [Outras tarefas úteis](#outras-tarefas-úteis)
+- [Requisitos de desenvolvimento](#requisitos-de-desenvolvimento)
+--- 
 
 ## 🔗 Ferramentas Disponíveis
 
@@ -22,9 +32,8 @@ Microsserviço FastAPI para manipulação e análise de strings.
 ## Documentação da API
 [Swagger Ui](https://stringutils.pinheirocosta.com/docs)
 
----
 
-## Exemplo de Requisição
+### Exemplo de Requisição
 
 ```bash
 curl -X POST https://stringutils.pinheirocosta.com/api/v1/stringutils/reverse \
@@ -32,19 +41,40 @@ curl -X POST https://stringutils.pinheirocosta.com/api/v1/stringutils/reverse \
      -d '{"text": "abc"}'
 ```
 
-## Como rodar localmente
+## Como rodar Usando Docker (produção)
+>A API ficará disponível em: http://localhost:5010
+```bash
+make build
+make run
+```
+
+## Ambiente de desenvolvimento interativo
+>Isso abrirá um shell interativo dentro do container com o código montado via volume.
+```bash
+make build-dev
+make run-dev
+```
+
+Exemplo para rodar o servidor manualmente dentro do container dev:
 
 ```bash
-# Build Docker
-docker build -t stringutils .
+uvicorn app.main:app --host 0.0.0.0 --port 5010 --reload
+```
 
-# Run container
-docker run -p 5010:5010 stringutils
-```
-ou usando Uvicorn diretamente:
+## Rodando sem Docker – opcional
+Requer Python 3.12+ com ambiente virtual e dependências instaladas via Poetry ou pip.
+
 ```bash
-uvicorn app.main:app --host 0.0.0.0 --port 5010
+uvicorn app.main:app --host 0.0.0.0 --port 5010 --reload
 ```
+
+## Outras tarefas úteis
+|Comando | Descrição|
+|---|---|
+|`make lint` | _Linting com Flake8_|
+|`make typecheck` | _Type checking com MyPy_|
+|`make test` | _Executa os testes com Pytest_|
+|`make shell` | _Abre um shell interativo no container de desenvolvimento_|
 
 ## Requisitos de desenvolvimento
 - Python 3.12+
@@ -53,4 +83,3 @@ uvicorn app.main:app --host 0.0.0.0 --port 5010
 - Pydantic
 - pytest
 - httpx 
-
