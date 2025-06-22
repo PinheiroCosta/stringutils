@@ -7,15 +7,16 @@ conversões de case, contagem de caracteres, geração de UUID, etc.
 
 import re
 import unicodedata
+from typing import Dict
 import uuid
 
 
 def count_characters(
     text: str,
-    count_spaces=True,
-    count_special=True,
-    count_escaped=True,
-):
+    count_spaces: bool = True,
+    count_special: bool = True,
+    count_escaped: bool = True,
+) -> Dict[str, int]:
     """
     Conta caracteres, palavras, vogais, consoantes e números em uma string.
 

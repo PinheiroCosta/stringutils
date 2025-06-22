@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-test:
@@ -38,19 +38,19 @@ jobs:
           pip install -r requirements.txt
           pip install pytest httpx flake8 mypy
 
-      - name: Lint com flake8
+      - name: Lint (flake8)
         run: flake8 .
 
-      - name: Type check com mypy
-        run: mypy app tests
+      - name: Type check (mypy)
+        run: mypy .
 
       - name: Rodar testes
         run: pytest
 
-      - name: Testar build Docker
+      - name: build Docker
         run: docker build -t stringutils .
 
-      - name: Testar execução Uvicorn (Smoke Test)
+      - name: Smoke Test Docker + Uvicorn
         run: |
           docker run -e PORT=5010 -d -p 5010:5010 --name stringutils_test stringutils
 
