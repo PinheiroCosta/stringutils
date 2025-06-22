@@ -18,7 +18,8 @@ def count_characters(
     count_escaped: bool = True,
 ) -> Dict[str, int]:
     """
-    Conta caracteres, palavras, vogais, consoantes e números em uma string.
+    Conta caracteres, palavras, vogais, consoantes, espaços, e caracteres
+    escapados em uma string.
 
     Args:
         text (str): Texto de entrada.
@@ -27,7 +28,8 @@ def count_characters(
         count_escaped (bool): Incluir caracteres de escape.
 
     Returns:
-        dict: Contagem de caracteres, palavras, vogais, consoantes e números.
+        dict: Contagem de caracteres, palavras, vogais, consoantes,
+        espaços, e caracteres escapados
     """
 
     ESCAPED_CHARS = {"\n", "\t", "\r", "\b", "\f", "\\", "\v"}
@@ -108,7 +110,6 @@ def lowercase(text: str) -> str:
 def slugify(text: str) -> str:
     """
     Converte a string em um slug URL-friendly.
-
     Remove acentuação, caracteres especiais e substitui espaços por hífens.
 
     Args:
@@ -151,7 +152,6 @@ def ascii_converter(text: str) -> str:
 def is_palindrome(text: str) -> bool:
     """
     Verifica se a string é um palíndromo.
-
     Ignora espaços, pontuação e diferença entre maiúsculas/minúsculas.
 
     Args:

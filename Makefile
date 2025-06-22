@@ -10,7 +10,18 @@ run:
 	docker run --rm -p 5010:5010 -e PORT=5010 stringutils
 
 run-dev:
-	docker run --rm -it -p 5010:5010 -e PORT=5010 -v $(PWD):/app -w /app stringutils-dev /bin/sh
+	docker run --rm -d \
+	--name stringutils-dev \
+	-p 5010:5010 \
+	-e PORT=5010 \
+	-v $(PWD):/app \
+	-w /app \
+	stringutils-dev \
+	uvicorn app.main:app --host 0.0.0.0 --port 5010 --reload
+	docker network connect romweb_dev_network stringutils-dev
+
+stop-dev:
+	docker stop stringutils-dev
 
 lint:
 	docker run --rm -v $(PWD):/app -w /app stringutils-dev flake8 -v app tests
