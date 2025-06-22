@@ -20,7 +20,7 @@ Microsserviço FastAPI para manipulação e análise de strings.
 
 
 ## Documentação da API
-[Swagger Ui](https://stringutils-601a.onrender.com/docs)
+[Swagger Ui](https://stringutils.pinheirocosta.com/docs)
 
 ---
 
