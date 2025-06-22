@@ -7,16 +7,16 @@ Microsserviço FastAPI para manipulação e análise de strings.
 
 ## 🔗 Ferramentas Disponíveis
 
-| Ferramenta | Descrição | Interface Web | Screenshot |
-|---|---|---|---|
-| [Reverse](https://pinheirocosta.com/tools/reverse) | Inverte o texto | [Abrir](https://pinheirocosta.com/tools/reverse-text) | ![Reverse Screenshot](screenshots/reverse-text.png) |
-| [Uppercase](https://pinheirocosta.com/tools/uppercase) | Converte para maiúsculas | [Abrir](https://pinheirocosta.com/tools/uppercase) | ![Uppercase Screenshot](screenshots/uppercase.png) |
-| [Lowercase](https://pinheirocosta.com/tools/lowercase) | Converte para minúsculas | [Abrir](https://pinheirocosta.com/tools/lowercase) | ![Lowercase Screenshot](screenshots/lowercase.png) |
-| [Slugify](https://pinheirocosta.com/tools/slugify) | Gera slugs URL-friendly | [Abrir](https://pinheirocosta.com/tools/slugify) | ![Slugify Screenshot](screenshots/slugify.png) |
-| [UUID Generator](https://pinheirocosta.com/tools/uuid) | Gera UUIDs aleatórios | [Abrir](https://pinheirocosta.com/tools/uuid) | ![UUID Screenshot](screenshots/uuid.png) |
-| [ASCII Converter](https://pinheirocosta.com/tools/ascii) | Converte para código ASCII | [Abrir](https://pinheirocosta.com/tools/ascii) | ![ASCII Screenshot](screenshots/ascii.png) |
-| [Palindrome Checker](https://pinheirocosta.com/tools/palindrome) | Verifica se o texto é um palíndromo | [Abrir](https://pinheirocosta.com/tools/palindrome) | ![Palindrome Screenshot](screenshots/palindrome.png) |
-| [Character Count](https://pinheirocosta.com/tools/charcount) | Conta caracteres e espaços | [Abrir](https://pinheirocosta.com/tools/charcount) | ![CharCount Screenshot](screenshots/charcount.png) |
+| Ferramenta | Descrição |
+|---|---|
+| [Reverse](https://pinheirocosta.com/tools/reverse) | Inverte a ordem dos caracteres em uma string, preservando corretamente caracteres Unicode compostos. Útil para análises e manipulação de texto | 
+| [Uppercase](https://pinheirocosta.com/tools/uppercase) | Converte todos os caracteres da string para letras maiúsculas, incluindo suporte a caracteres Unicode. Útil para padronização de entradas. |
+| [Lowercase](https://pinheirocosta.com/tools/lowercase) |Converte todos os caracteres da string para letras minúsculas, respeitando caracteres Unicode. Útil para normalização de texto.|
+| [Slugify](https://pinheirocosta.com/tools/slugify) | Converte uma string em um slug amigável para URLs, removendo acentuações, caracteres especiais e substituindo espaços por hífens. |
+| [UUID Generator](https://pinheirocosta.com/tools/uuid) | Gera um UUID v4 aleatório conforme RFC 4122, garantindo um identificador único universal para usos como chaves primárias ou tokens. |
+| [ASCII Converter](https://pinheirocosta.com/tools/ascii) | Converte um texto para ASCII puro, removendo acentos e caracteres especiais. |
+| [Palindrome Checker](https://pinheirocosta.com/tools/palindrome) | Verifica se o texto é palíndromo, ignorando espaços, pontuação e caixa. Retorna Verdadeiro ou Falso. |
+| [Character Count](https://pinheirocosta.com/tools/charcount) | Contabiliza com precisão o número de caracteres, palavras, espaços, símbolos especiais e sequências de escape. Útil para desenvolvedores, redatores e profissionais que precisam respeitar limites de texto em campos, mensagens ou códigos. |
 
 
 ## Documentação da API
