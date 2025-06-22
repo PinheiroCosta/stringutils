@@ -47,17 +47,10 @@ make build
 make run
 ```
 
-## Ambiente de desenvolvimento interativo
->Isso abrirá um shell interativo dentro do container com o código montado via volume.
+## Ambiente de desenvolvimento
 ```bash
 make build-dev
 make run-dev
-```
-
-Exemplo para rodar o servidor manualmente dentro do container dev:
-
-```bash
-uvicorn app.main:app --host 0.0.0.0 --port 5010 --reload
 ```
 
 ## Rodando sem Docker – opcional
