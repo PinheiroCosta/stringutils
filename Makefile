@@ -16,7 +16,7 @@ lint:
 	docker run --rm -v $(PWD):/app -w /app stringutils-dev flake8 -v app tests
 
 typecheck:
-	docker run --rm -v $(PWD):/app -w /app stringutils-dev mypy app
+	docker run --rm -v $(PWD):/app -w /app stringutils-dev mypy .
 
 test:
 	docker run --rm -v $(PWD):/app -w /app stringutils-dev pytest tests
