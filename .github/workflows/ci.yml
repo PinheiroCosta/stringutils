@@ -7,32 +7,25 @@ on:
     branches: [main]
 
 jobs:
-  build-and-test:
+  lint-typecheck:
     runs-on: ubuntu-latest
-
-    services:
-      docker:
-        image: docker:24
-        options: --privileged
-
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Instalar Poetry
+      - name: Install Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-      - name: Sanity check do pyproject
+      - name: Poetry check
         run: poetry check
 
-      - name: Instalar dependências
+      - name: Install dependencies
         run: |
           poetry config virtualenvs.create false
           poetry install --no-interaction --no-ansi
@@ -43,26 +36,56 @@ jobs:
       - name: Type check (mypy)
         run: poetry run mypy .
 
-      - name: Rodar testes
+  unit-tests:
+    runs-on: ubuntu-latest
+    needs: lint-typecheck
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Install dependencies
+        run: |
+          poetry config virtualenvs.create false
+          poetry install --no-interaction --no-ansi
+
+      - name: Run tests
         run: poetry run pytest
 
-      - name: Build Docker
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: unit-tests
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
         run: docker build -t stringutils .
 
-      - name: Smoke Test Docker + Uvicorn
+  docker-smoke-test:
+    runs-on: ubuntu-latest
+    needs: docker-build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Docker container and smoke test
         run: |
           docker run -e PORT=5010 -d -p 5010:5010 --name stringutils_test stringutils
-
           for i in {1..10}; do
             curl -sf http://localhost:5010/docs && break
             echo "Aguardando app iniciar..."
             sleep 2
           done
-
           if ! curl -sf http://localhost:5010/docs; then
             echo "Falha ao acessar /docs"
             docker logs stringutils_test
             exit 1
           fi
-
           docker stop stringutils_test
