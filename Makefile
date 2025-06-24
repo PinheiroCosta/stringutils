@@ -34,3 +34,6 @@ test:
 
 shell:
 	docker run --rm -it -v $(PWD):/app -w /app stringutils-dev /bin/sh
+
+lock:
+	docker run --rm -v $(PWD):/app -w /app stringutils-dev poetry lock

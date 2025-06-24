@@ -1,26 +1,27 @@
-[project]
-name = "StringUtils"
+[tool.poetry]
+name = "stringutils"
 version = "0.1.0"
 description = "Microserviço para tarefas de manipulação de strings."
-authors = [
-    {name = "Rômulo",email = "romulo@pinheirocosta.com"}
-]
+authors = ["Rômulo <romulo@pinheirocosta.com>"]
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-    "fastapi (>=0.115.13,<0.116.0)",
-    "uvicorn[standard] (>=0.34.3,<0.35.0)",
-    "pydantic (>=2.11.7,<3.0.0)",
-    "beautifulsoup4 (>=4.13.4,<5.0.0)",
+
+packages = [
+    { include = "app" }
 ]
 
+[tool.poetry.dependencies]
+python = ">=3.12"
+fastapi = ">=0.115.13,<0.116.0"
+uvicorn = {extras=["standard"], version=">=0.34.3,<0.35.0"}
+pydantic = ">=2.11.7,<3.0.0"
+beautifulsoup4 = ">=4.13.4,<5.0.0"
 
-[build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.group.dev.dependencies]
+[tool.poetry.dev-dependencies]
 pytest = "^8.4.1"
 mypy = "^1.16.1"
 flake8 = "^7.3.0"
 httpx = "^0.28.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
