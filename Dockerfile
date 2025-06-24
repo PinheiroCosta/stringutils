@@ -21,4 +21,4 @@ RUN apt update && apt install -y curl gcc libffi-dev libpq-dev \
   && poetry config virtualenvs.create false \
   && poetry install --no-interaction --no-ansi --without dev
 ENV PATH=/root/.local/bin:$PATH
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "${PORT:-5010}"]
+CMD uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-5010}
