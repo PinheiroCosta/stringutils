@@ -54,3 +54,13 @@ def ascii_converter(input: TextInput) -> Dict[str, str]:
 @router.post("/palindrome")
 def palindrome(input: TextInput) -> Dict[str, bool]:
     return {"result": string_ops.is_palindrome(input.text)}
+
+
+@router.post("/unentity")
+def unentity(input: TextInput) -> Dict[str, str]:
+    return {"result": string_ops.unentity(input.text)}
+
+
+@router.post("/striptags")
+def strip_tags(input: TextInput) -> Dict[str, str]:
+    return {"result": string_ops.strip_tags(input.text)}

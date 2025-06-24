@@ -5,10 +5,11 @@ Contém funções utilitárias para manipulação de texto, incluindo
 conversões de case, contagem de caracteres, geração de UUID, etc.
 """
 
+from typing import Dict
 import re
 import unicodedata
-from typing import Dict
 import uuid
+import html
 
 
 def count_characters(
@@ -162,3 +163,38 @@ def is_palindrome(text: str) -> bool:
     """
     normalized = re.sub(r'[^a-zA-Z0-9]', '', text).lower()
     return normalized == normalized[::-1]
+
+
+def unentity(text: str) -> str:
+    """
+    Converte entidades HTML para seus caracteres correspondentes.
+
+    Exemplo:
+        "Direitos &copy; 2025" -> "Direitos © 2025"
+        "5 &lt; 10" -> "5 < 10"
+
+    Args:
+        text (str): Texto contendo entidades HTML (nomeadas ou numéricas).
+
+    Returns:
+        str: Texto com as entidades convertidas para caracteres Unicode.
+    """
+    return html.unescape(text)
+
+
+def strip_tags(text: str) -> str:
+    """
+    Remove todas as tags HTML do texto, preservando o conteúdo textual
+    e entidades.
+
+    Exemplo:
+        "<p>Olá <b>mundo</b> - 2 &gt; 1</p>" -> "Olá mundo - 2 &gt; 1"
+
+    Args:
+        text (str): Texto contendo tags HTML.
+
+    Returns:
+        str: Texto limpo, sem tags HTML, com entidades preservadas.
+    """
+    TAG_RE = re.compile(r'<[^>]+>')
+    return TAG_RE.sub('', text)
