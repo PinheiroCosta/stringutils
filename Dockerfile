@@ -13,6 +13,12 @@ COPY ./tests ./tests
 # Stage 2: Runtime leve
 FROM python:3.12-slim AS prod
 WORKDIR /app
-COPY --from=dev /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
+COPY pyproject.toml poetry.lock ./
+RUN apt update && apt install -y curl gcc libffi-dev libpq-dev \
+  && curl -sSL https://install.python-poetry.org | python3 - \
+  && export PATH="$HOME/.local/bin:$PATH" \
+  && poetry config virtualenvs.create false \
+  && poetry install --no-dev --no-interaction --no-ansi
 COPY ./app ./app
+ENV PATH=/root/.local/bin:$PATH
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "${PORT:-5010}"]
