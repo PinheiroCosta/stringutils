@@ -13,7 +13,7 @@ COPY ./tests ./tests
 # Stage 2: Runtime leve
 FROM python:3.12-slim AS prod
 WORKDIR /app
-COPY pyproject.toml poetry.lock ./
+COPY pyproject.toml poetry.lock README.md ./
 RUN apt update && apt install -y curl gcc libffi-dev libpq-dev \
   && curl -sSL https://install.python-poetry.org | python3 - \
   && export PATH="$HOME/.local/bin:$PATH" \
