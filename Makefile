@@ -1,4 +1,4 @@
-.PHONY: build build-dev run run-dev lint typecheck test shell
+.PHONY: build build-dev run run-dev stop-dev lint typecheck test shell
 
 build:
 	docker build --target prod -t stringutils .
@@ -17,21 +17,20 @@ run-dev:
 	-v $(PWD):/app \
 	-w /app \
 	stringutils-dev \
-	uvicorn app.main:app --host 0.0.0.0 --port 5010 --reload
+	poetry run uvicorn app.main:app --host 0.0.0.0 --port 5010 --reload
 	docker network connect romweb_dev_network stringutils-dev
 
 stop-dev:
 	docker stop stringutils-dev
 
 lint:
-	docker run --rm -v $(PWD):/app -w /app stringutils-dev flake8 -v app tests
+	docker run --rm -v $(PWD):/app -w /app stringutils-dev poetry run flake8 -v app tests
 
 typecheck:
-	docker run --rm -v $(PWD):/app -w /app stringutils-dev mypy .
+	docker run --rm -v $(PWD):/app -w /app stringutils-dev poetry run mypy .
 
 test:
-	docker run --rm -v $(PWD):/app -w /app stringutils-dev pytest tests
+	docker run --rm -v $(PWD):/app -w /app stringutils-dev poetry run pytest tests
 
 shell:
 	docker run --rm -it -v $(PWD):/app -w /app stringutils-dev /bin/sh
-
