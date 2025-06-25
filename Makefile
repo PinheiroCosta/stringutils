@@ -30,7 +30,7 @@ typecheck:
 	docker run --rm -v $(PWD):/app -w /app stringutils-dev poetry run mypy .
 
 test:
-	docker run --rm -v $(PWD):/app -w /app stringutils-dev poetry run pytest tests
+	docker run --rm -v $(PWD):/app -w /app stringutils-dev poetry run env PYTHONPATH=/app pytest tests
 
 shell:
 	docker run --rm -it -v $(PWD):/app -w /app stringutils-dev /bin/sh
