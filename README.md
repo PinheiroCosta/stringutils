@@ -9,23 +9,26 @@ Microsserviço FastAPI para manipulação e análise de strings.
 - [Documentação da API](#documentação-da-api)
 - [Exemplo de Requisição](#exemplo-de-requisição)
 - [Como rodar Usando Docker (produção)](#como-rodar-usando-docker-produção)
-- [Ambiente de desenvolvimento interativo](#ambiente-de-desenvolvimento-interativo)
+- [Ambiente de desenvolvimento](#ambiente-de-desenvolvimento)
 - [Rodando sem Docker – opcional](#rodando-sem-docker--opcional)
 - [Outras tarefas úteis](#outras-tarefas-úteis)
 - [Requisitos de desenvolvimento](#requisitos-de-desenvolvimento)
 --- 
 ## 🔗 Ferramentas Disponíveis
 
-| Ferramenta | Descrição |
-|---|---|
-| [Reverse](https://pinheirocosta.com/tools/reverse-text) | Inverte a ordem dos caracteres em uma string, preservando corretamente caracteres Unicode compostos. Útil para análises e manipulação de texto | 
-| [Uppercase](https://pinheirocosta.com/tools/uppercase) | Converte todos os caracteres da string para letras maiúsculas, incluindo suporte a caracteres Unicode. Útil para padronização de entradas. |
-| [Lowercase](https://pinheirocosta.com/tools/lowercase) |Converte todos os caracteres da string para letras minúsculas, respeitando caracteres Unicode. Útil para normalização de texto.|
-| [Slugify](https://pinheirocosta.com/tools/slugify) | Converte uma string em um slug amigável para URLs, removendo acentuações, caracteres especiais e substituindo espaços por hífens. |
-| [UUID Generator](https://pinheirocosta.com/tools/uuidgenerator) | Gera um UUID v4 aleatório conforme RFC 4122, garantindo um identificador único universal para usos como chaves primárias ou tokens. |
-| [ASCII Converter](https://pinheirocosta.com/tools/ascii-converter) | Converte um texto para ASCII puro, removendo acentos e caracteres especiais. |
-| [Palindrome Checker](https://pinheirocosta.com/tools/palindrome) | Verifica se o texto é palíndromo, ignorando espaços, pontuação e caixa. Retorna Verdadeiro ou Falso. |
-| [Character Count](https://pinheirocosta.com/tools/charcount) | Contabiliza com precisão o número de caracteres, palavras, espaços, símbolos especiais e sequências de escape. Útil para desenvolvedores, redatores e profissionais que precisam respeitar limites de texto em campos, mensagens ou códigos. |
+| Ferramenta          | Descrição                                                                                                                                                |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Reverse](https://pinheirocosta.com/tools/reverse-text)               | Inverte a ordem dos caracteres em uma string, preservando corretamente caracteres Unicode compostos. Útil para análises e manipulação de texto.           |
+| [Uppercase](https://pinheirocosta.com/tools/uppercase)               | Converte todos os caracteres da string para letras maiúsculas, incluindo suporte a caracteres Unicode. Útil para padronização de entradas.                 |
+| [Lowercase](https://pinheirocosta.com/tools/lowercase)               | Converte todos os caracteres da string para letras minúsculas, respeitando caracteres Unicode. Útil para normalização de texto.                            |
+| [Slugify](https://pinheirocosta.com/tools/slugify)                   | Converte uma string em um slug amigável para URLs, removendo acentuações, caracteres especiais e substituindo espaços por hífens.                           |
+| [UUID Generator](https://pinheirocosta.com/tools/uuidgenerator)      | Gera um UUID v4 aleatório conforme RFC 4122, garantindo um identificador único universal para usos como chaves primárias ou tokens.                         |
+| [ASCII Converter](https://pinheirocosta.com/tools/ascii-converter)  | Converte um texto para ASCII puro, removendo acentos e caracteres especiais.                                                                                |
+| [Palindrome Checker](https://pinheirocosta.com/tools/palindrome)     | Verifica se o texto é palíndromo, ignorando espaços, pontuação e caixa. Retorna Verdadeiro ou Falso.                                                      |
+| [Character Count](https://pinheirocosta.com/tools/charcount)         | Contabiliza com precisão o número de caracteres, palavras, espaços, símbolos especiais e sequências de escape. Útil para desenvolvedores, redatores e profissionais que precisam respeitar limites de texto em campos, mensagens ou códigos. |
+| [Escape HTML](https://pinheirocosta.com/tools/escape-html)           | Escapa caracteres especiais HTML convertendo-os para suas entidades correspondentes, prevenindo vulnerabilidades XSS e problemas de formatação.             |
+| [Strip Tags](https://pinheirocosta.com/tools/striptags)              | Remove todas as tags HTML e XML de uma string, retornando apenas o texto puro. Útil para sanitização simples de conteúdo.                                   |
+
 
 
 ## Documentação da API
