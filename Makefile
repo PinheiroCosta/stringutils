@@ -1,10 +1,10 @@
 .PHONY: build build-dev run run-dev stop-dev lint typecheck test shell
 
 build:
-	docker build --target prod -t stringutils .
+	docker build --target prod -t stringutils . --no-cache
 
 build-dev:
-	docker build --target dev -t stringutils-dev .
+	docker build --target dev -t stringutils-dev . --no-cache
 
 run:
 	docker run --rm -p 5010:5010 -e PORT=5010 stringutils
