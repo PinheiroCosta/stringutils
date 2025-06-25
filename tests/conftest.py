@@ -1,11 +1,5 @@
-import sys
-import os
-
-parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-if parent_dir not in sys.path:
-    sys.path.insert(0, parent_dir)
-
 import pytest
+from pytest import MonkeyPatch
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from app.api.v1 import endpoints
@@ -27,7 +21,7 @@ def create_test_app() -> FastAPI:
 
 
 @pytest.fixture
-def client(monkeypatch):
+def client(monkeypatch: MonkeyPatch) -> TestClient:
     monkeypatch.setenv("CORS_ORIGINS", "https://example.com")
     app = create_test_app()
     return TestClient(app)

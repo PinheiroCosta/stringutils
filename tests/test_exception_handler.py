@@ -3,7 +3,7 @@ from fastapi.testclient import TestClient
 from app.exception_handlers import generic_exception_handler
 
 
-def raise_runtime_error():
+def raise_runtime_error() -> None:
     raise RuntimeError("Forced error for testing")
 
 
@@ -12,7 +12,7 @@ def create_test_app() -> FastAPI:
     app.add_exception_handler(Exception, generic_exception_handler)
 
     @app.get("/force-error")
-    def force_error(_: None = Depends(raise_runtime_error)):
+    def force_error(_: None = Depends(raise_runtime_error)) -> dict:
         return {"ok": True}
 
     return app

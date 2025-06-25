@@ -1,10 +1,13 @@
-# app/security.py
 import os
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-def configure_security(app):
+
+def configure_security(app: FastAPI) -> None:
     origins_env = os.getenv("CORS_ORIGINS", "")
-    origins = [origin.strip() for origin in origins_env.split(",") if origin.strip()]
+    origins = [
+        origin.strip() for origin in origins_env.split(",") if origin.strip()
+    ]
 
     app.add_middleware(
         CORSMiddleware,

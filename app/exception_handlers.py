@@ -6,7 +6,9 @@ from fastapi.responses import JSONResponse
 logging.basicConfig(level=logging.ERROR)
 
 
-async def generic_exception_handler(request: Request, exc: Exception):
+async def generic_exception_handler(
+    request: Request, exc: Exception
+) -> JSONResponse:
     logging.error(f"Unhandled error: {exc}\n{traceback.format_exc()}")
     return JSONResponse(
         status_code=500,

@@ -205,7 +205,8 @@ def escape_html(text: str) -> str:
     Escapa caracteres especiais de HTML para suas entidades correspondentes.
 
     Exemplo:
-        "<div>5 < 10 & 'ok'</div>" -> "&lt;div&gt;5 &lt; 10 &amp; &#x27;ok&#x27;&lt;/div&gt;"
+        "<div>5 < 10 & 'ok'</div>" ->
+        "&lt;div&gt;5 &lt; 10 &amp; &#x27;ok&#x27;&lt;/div&gt;"
 
     Cuidado:
         - Garante que apenas o texto puro seja escapado.
