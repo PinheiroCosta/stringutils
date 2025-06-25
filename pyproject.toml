@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "stringutils"
-version = "0.1.0"
+version = "1.1.0"
 description = "Microserviço para tarefas de manipulação de strings."
 authors = ["Rômulo <romulo@pinheirocosta.com>"]
 readme = "README.md"
