@@ -64,3 +64,8 @@ def unentity(input: TextInput) -> Dict[str, str]:
 @router.post("/striptags")
 def strip_tags(input: TextInput) -> Dict[str, str]:
     return {"result": string_ops.strip_tags(input.text)}
+
+
+@router.post("/escape-html")
+def escape_html(input: TextInput) -> Dict[str, str]:
+    return {"result": string_ops.escape_html(input.text)}

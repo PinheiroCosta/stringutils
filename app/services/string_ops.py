@@ -198,3 +198,23 @@ def strip_tags(text: str) -> str:
     """
     TAG_RE = re.compile(r'<[^>]+>')
     return TAG_RE.sub('', text)
+
+
+def escape_html(text: str) -> str:
+    """
+    Escapa caracteres especiais de HTML para suas entidades correspondentes.
+
+    Exemplo:
+        "<div>5 < 10 & 'ok'</div>" -> "&lt;div&gt;5 &lt; 10 &amp; &#x27;ok&#x27;&lt;/div&gt;"
+
+    Cuidado:
+        - Garante que apenas o texto puro seja escapado.
+        - Se o input já tiver entidades, ocorrerá double-escaping.
+
+    Args:
+        text (str): Texto de entrada.
+
+    Returns:
+        str: Texto com caracteres especiais escapados como entidades HTML.
+    """
+    return html.escape(text, quote=False)
