@@ -29,6 +29,9 @@ lint:
 typecheck:
 	docker run --rm -v $(PWD):/app -w /app stringutils-dev poetry run mypy .
 
+ruff:
+	docker run --rm -v $(PWD):/app -w /app stringutils-dev poetry run ruff check .
+
 test:
 	docker run --rm -v $(PWD):/app -w /app stringutils-dev poetry run env PYTHONPATH=/app pytest tests
 
